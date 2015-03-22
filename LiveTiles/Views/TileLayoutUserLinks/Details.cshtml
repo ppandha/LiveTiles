@@ -1,0 +1,34 @@
+﻿@model LiveTiles.Models.TileLayoutUserLink
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TileLayoutUserLink</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tile.TileId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tile.TileId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserAccount.OrgUnit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserAccount.OrgUnit)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TileLayoutUserLinkId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

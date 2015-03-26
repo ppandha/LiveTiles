@@ -7,9 +7,6 @@ namespace LiveTiles.Models
     public class Calender : Tile
     {
         [Required]
-        public string Title { get; set; }
-
-        [Required]
         public string Contents { get; set; }
 
         public string Location { get; set; }

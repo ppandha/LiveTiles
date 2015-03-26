@@ -1,0 +1,39 @@
+﻿@model IEnumerable<LiveTiles.Models.Twitter>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TileType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SearchCriteria)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TileType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SearchCriteria)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TileId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TileId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TileId })
+        </td>
+    </tr>
+}
+
+</table>

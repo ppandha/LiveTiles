@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using LiveTiles.DAL;
+using LiveTiles.Models;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using LiveTiles.DAL;
-using LiveTiles.Models;
 
 namespace LiveTiles.Controllers
 {
     public class UserAccountsController : Controller
     {
         private LiveTilesContext db = new LiveTilesContext();
+        private int savedNumberOfTiles;
 
         // GET: UserAccounts
         public ActionResult Index()
@@ -49,12 +46,27 @@ namespace LiveTiles.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserAccountId,OrgUnit,OrgName,Password,TileLayoutId")] UserAccount userAccount)
+        public ActionResult Create([Bind(Include = "UserAccountId,OrgUnit,OrgName,TileLayoutId")] UserAccount userAccount)
         {
             if (ModelState.IsValid)
             {
                 db.UserAccount.Add(userAccount);
                 db.SaveChanges();
+
+                // Add tile entries for the tile type for this user account
+                var num = db.TileLayout.Find(userAccount.TileLayoutId).NumberOfTiles;
+
+                for (int i = 0; i < num; i++)
+                {
+                    db.TileLayoutUserLink.Add(new TileLayoutUserLink
+                    {
+                        TileId = 0, // The Tile to display 
+                        UserAccountId = userAccount.UserAccountId
+                    });
+                }
+
+                db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 
@@ -74,6 +86,8 @@ namespace LiveTiles.Controllers
             {
                 return HttpNotFound();
             }
+
+            savedNumberOfTiles = db.TileLayout.Find(userAccount.TileLayoutId).NumberOfTiles;
             ViewBag.TileLayoutId = new SelectList(db.TileLayout, "TileLayoutId", "Description", userAccount.TileLayoutId);
             return View(userAccount);
         }
@@ -83,12 +97,39 @@ namespace LiveTiles.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserAccountId,OrgUnit,OrgName,Password,TileLayoutId")] UserAccount userAccount)
+        public ActionResult Edit([Bind(Include = "UserAccountId,OrgUnit,OrgName,TileLayoutId")] UserAccount userAccount)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(userAccount).State = EntityState.Modified;
                 db.SaveChanges();
+
+
+                // Check if number of tiles has changed in this edit, if so remove the old tiles for this user and
+                // add the right number of new ones.
+                var num = db.TileLayout.Find(userAccount.TileLayoutId).NumberOfTiles;
+                if (num != savedNumberOfTiles)
+                {
+                    var todelete = db.TileLayoutUserLink.Where(d => d.UserAccountId == userAccount.UserAccountId);
+
+                    foreach (var u in todelete)
+                    {
+                        db.TileLayoutUserLink.Remove(u);
+                    }
+                    db.SaveChanges();
+                }
+
+                //add new tiles for this user
+                for (var i = 0; i < num; i++)
+                {
+                    db.TileLayoutUserLink.Add(new TileLayoutUserLink
+                    {
+                        TileId = 0, // The Tile to display 
+                        UserAccountId = userAccount.UserAccountId
+                    });
+                }
+                db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
             ViewBag.TileLayoutId = new SelectList(db.TileLayout, "TileLayoutId", "Description", userAccount.TileLayoutId);

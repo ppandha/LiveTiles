@@ -16,11 +16,6 @@ namespace LiveTiles.Models
         public string OrgName { get; set; }
 
         [Required]
-        [DataType(DataType.Password)]
-        [Display(Name = "Password")]
-        public string Password { get; set; }
-
-        [Required]
         public int TileLayoutId { get; set; }
 
         public virtual TileLayout TileLayout { get; set; }

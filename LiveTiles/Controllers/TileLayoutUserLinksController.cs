@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using LiveTiles.DAL;
+using LiveTiles.Models;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using LiveTiles.DAL;
-using LiveTiles.Models;
 
 namespace LiveTiles.Controllers
 {
@@ -18,7 +15,7 @@ namespace LiveTiles.Controllers
         // GET: TileLayoutUserLinks
         public ActionResult Index()
         {
-            var tileLayoutUserLink = db.TileLayoutUserLink.Include(t => t.Tile).Include(t => t.UserAccount);
+            var tileLayoutUserLink = db.TileLayoutUserLink.Include(t => t.UserAccount);
             return View(tileLayoutUserLink.ToList());
         }
 
@@ -40,7 +37,7 @@ namespace LiveTiles.Controllers
         // GET: TileLayoutUserLinks/Create
         public ActionResult Create()
         {
-            ViewBag.TileId = new SelectList(db.Tile, "TileId", "TileId");
+            PopulateDepartmentsDropDownList();
             ViewBag.UserAccountId = new SelectList(db.UserAccount, "UserAccountId", "OrgUnit");
             return View();
         }
@@ -59,7 +56,7 @@ namespace LiveTiles.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.TileId = new SelectList(db.Tile, "TileId", "TileId", tileLayoutUserLink.TileId);
+            PopulateDepartmentsDropDownList(tileLayoutUserLink.TileId);
             ViewBag.UserAccountId = new SelectList(db.UserAccount, "UserAccountId", "OrgUnit", tileLayoutUserLink.UserAccountId);
             return View(tileLayoutUserLink);
         }
@@ -76,7 +73,7 @@ namespace LiveTiles.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.TileId = new SelectList(db.Tile, "TileId", "TileId", tileLayoutUserLink.TileId);
+            PopulateDepartmentsDropDownList(tileLayoutUserLink.TileId);
             ViewBag.UserAccountId = new SelectList(db.UserAccount, "UserAccountId", "OrgUnit", tileLayoutUserLink.UserAccountId);
             return View(tileLayoutUserLink);
         }
@@ -88,13 +85,34 @@ namespace LiveTiles.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "TileLayoutUserLinkId,UserAccountId,TileId")] TileLayoutUserLink tileLayoutUserLink)
         {
-            if (ModelState.IsValid)
+            //if (ModelState.IsValid)
+            //{
+            //    db.Entry(tileLayoutUserLink).State = EntityState.Modified;
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
+            if (tileLayoutUserLink == null)
             {
-                db.Entry(tileLayoutUserLink).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ViewBag.TileId = new SelectList(db.Tile, "TileId", "TileId", tileLayoutUserLink.TileId);
+            //var tileLayoutUserLinkToUpdate = db.TileLayoutUserLink.Find(id);
+            if (TryUpdateModel(tileLayoutUserLink, "",
+               new string[] { "Title", "Credits", "DepartmentID" }))
+            {
+                try
+                {
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
+                catch (RetryLimitExceededException /* dex */)
+                {
+                    //Log the error (uncomment dex variable name and add a line here to write a log.
+                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                }
+            }
+
+            PopulateDepartmentsDropDownList(tileLayoutUserLink.TileId);
             ViewBag.UserAccountId = new SelectList(db.UserAccount, "UserAccountId", "OrgUnit", tileLayoutUserLink.UserAccountId);
             return View(tileLayoutUserLink);
         }
@@ -124,6 +142,14 @@ namespace LiveTiles.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        private void PopulateDepartmentsDropDownList(object selectedTile = null)
+        {
+            var tilesQuery = from t in db.Tile
+                                   orderby t.TileType
+                                   select t;
+            ViewBag.TileId = new SelectList(tilesQuery, "TileId", "Title", selectedTile);
+        } 
 
         protected override void Dispose(bool disposing)
         {

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 
 namespace LiveTiles.Models
@@ -13,7 +12,10 @@ namespace LiveTiles.Models
         [Required]
         public int TileType { get; set; }
 
-        public virtual ICollection<TileLayoutUserLink> TileLayoutUserLink { get; set; }
+        [Required]
+        public string Title { get; set; }
+
+        // public virtual ICollection<TileLayoutUserLink> TileLayoutUserLink { get; set; }
 
     }
 }

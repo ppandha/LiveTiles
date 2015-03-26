@@ -7,7 +7,7 @@ namespace LiveTiles.DAL
     public class LiveTilesContext : DbContext
     {
         public LiveTilesContext()
-            : base("LiveTilesContext")
+            : base("LiveTilesContext4")
         {
             Database.SetInitializer(new DropCreateDatabaseAlways<LiveTilesContext>());
         }
@@ -19,7 +19,7 @@ namespace LiveTiles.DAL
         public DbSet<Twitter> Twitter { get; set; }
 
         public DbSet<TileLayout> TileLayout { get; set; }
-        //public DbSet<TileType> TileType { get; set; }
+        public DbSet<TileType> TileType { get; set; }
         public DbSet<TileLayoutUserLink> TileLayoutUserLink { get; set; }
         public DbSet<UserAccount> UserAccount { get; set; }
 
@@ -27,7 +27,5 @@ namespace LiveTiles.DAL
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
-
-       // public System.Data.Entity.DbSet<LiveTiles.Models.Tile> Tiles { get; set; }
     }
 }

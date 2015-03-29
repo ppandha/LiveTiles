@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using LiveTiles.DAL;
+using LiveTiles.Models;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using LiveTiles.DAL;
-using LiveTiles.Models;
 
 namespace LiveTiles.Controllers
 {
@@ -47,7 +43,7 @@ namespace LiveTiles.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TileId,TileType,RssUrl")] Newsfeed newsfeed)
+        public ActionResult Create([Bind(Include = "TileId,RssUrl")] Newsfeed newsfeed)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +75,7 @@ namespace LiveTiles.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TileId,TileType,RssUrl")] Newsfeed newsfeed)
+        public ActionResult Edit([Bind(Include = "TileId,RssUrl")] Newsfeed newsfeed)
         {
             if (ModelState.IsValid)
             {

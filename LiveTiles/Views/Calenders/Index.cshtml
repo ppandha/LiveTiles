@@ -1,19 +1,19 @@
 ﻿@model IEnumerable<LiveTiles.Models.Calender>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Calendars";
 }
 
-<h2>Index</h2>
+<h2>Calendars</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.TileType)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
@@ -34,9 +34,9 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.TileType)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>

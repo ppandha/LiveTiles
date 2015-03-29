@@ -108,7 +108,7 @@ namespace LiveTiles.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Calender calender = db.Calendar.Find(id);
-            db.Tile.Remove(calender);
+            db.Calendar.Remove(calender);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

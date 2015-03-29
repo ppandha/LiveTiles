@@ -1,21 +1,29 @@
 ﻿@model LiveTiles.Models.Twitter
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Twitter Ids";
 }
 
-<h2>Details</h2>
+<h2>Twitter Ids Details</h2>
 
 <div>
     <h4>Twitter</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.TileType)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.TileType)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
         </dd>
 
         <dt>

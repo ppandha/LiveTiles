@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Edit Tile Assignment</h2>
 
 
 @using (Html.BeginForm())
@@ -17,13 +17,29 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.TileLayoutUserLinkId)
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.UserAccountId, "UserAccountId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("UserAccountId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.UserAccountId, "", new { @class = "text-danger" })
             </div>
+        </div>*@
+
+        <div class="form-group" >
+            @Html.LabelFor(model => model.UserAccount.OrgName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.UserAccount.OrgName, new { htmlAttributes = new { @class = "form-control" }, disabled="disabled", @readonly = "readonly"})
+            </div>
         </div>
+
+        <div class="form-group">
+                  @Html.LabelFor(model => model.UserAccount.OrgUnit, htmlAttributes: new { @class = "control-label col-md-2" })
+                  <div class="col-md-10">
+                      @Html.TextBoxFor(model => model.UserAccount.OrgUnit, new { htmlAttributes = new { @class = "form-control" }, disabled = "disabled", @readonly = "readonly" })
+                  </div>
+              </div>
+
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.TileId, "TileId", htmlAttributes: new { @class = "control-label col-md-2" })

@@ -1,18 +1,21 @@
 ﻿@model IEnumerable<LiveTiles.Models.Twitter>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Twitter Ids";
 }
 
-<h2>Index</h2>
+<h2>Twitter Ids</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.TileType)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.SearchCriteria)
@@ -22,8 +25,11 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.TileType)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.SearchCriteria)

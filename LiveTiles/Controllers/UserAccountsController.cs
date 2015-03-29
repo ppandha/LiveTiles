@@ -55,14 +55,20 @@ namespace LiveTiles.Controllers
 
                 // Add tile entries for the tile type for this user account
                 var num = db.TileLayout.Find(userAccount.TileLayoutId).NumberOfTiles;
+                // Find a valid tile to use for initializing the new tiles
+                var tile = db.TileLayoutUserLink.FirstOrDefault(d => d.TileId != 0);
 
-                for (int i = 0; i < num; i++)
+                if (tile != null)
                 {
-                    db.TileLayoutUserLink.Add(new TileLayoutUserLink
+                    //add new tiles for this user
+                    for (var i = 0; i < num; i++)
                     {
-                        TileId = 0, // The Tile to display 
-                        UserAccountId = userAccount.UserAccountId
-                    });
+                        db.TileLayoutUserLink.Add(new TileLayoutUserLink
+                        {
+                            TileId = tile.TileId, // The Tile to display 
+                            UserAccountId = userAccount.UserAccountId
+                        });
+                    }
                 }
 
                 db.SaveChanges();
@@ -119,17 +125,22 @@ namespace LiveTiles.Controllers
                     db.SaveChanges();
                 }
 
-                //add new tiles for this user
-                for (var i = 0; i < num; i++)
-                {
-                    db.TileLayoutUserLink.Add(new TileLayoutUserLink
-                    {
-                        TileId = 0, // The Tile to display 
-                        UserAccountId = userAccount.UserAccountId
-                    });
-                }
-                db.SaveChanges();
+                // Find a valid tile to use for initializing the new tiles
+                var tile = db.TileLayoutUserLink.FirstOrDefault(d => d.TileId != 0);
 
+                if (tile != null)
+                {
+                    //add new tiles for this user
+                    for (var i = 0; i < num; i++)
+                    {
+                        db.TileLayoutUserLink.Add(new TileLayoutUserLink
+                        {
+                            TileId = tile.TileId, // The Tile to display 
+                            UserAccountId = userAccount.UserAccountId
+                        });
+                    }
+                    db.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
             ViewBag.TileLayoutId = new SelectList(db.TileLayout, "TileLayoutId", "Description", userAccount.TileLayoutId);

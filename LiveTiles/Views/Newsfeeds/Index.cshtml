@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<LiveTiles.Models.Newsfeed>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Newsfeeds";
 }
 
-<h2>Index</h2>
+<h2>Newsfeeds</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -14,6 +14,9 @@
         @*<th>
             @Html.DisplayNameFor(model => model.TileType)
         </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.RssUrl)
         </th>
@@ -25,6 +28,9 @@
         @*<td>
             @Html.DisplayFor(modelItem => item.TileType)
         </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.RssUrl)
         </td>

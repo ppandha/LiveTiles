@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<LiveTiles.Models.UserAccount>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "User Accounts";
 }
 
-<h2>Index</h2>
+<h2>User Accounts</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,13 +12,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.TileLayout.Description)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.OrgUnit)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.OrgName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TileLayout.Description)
         </th>
         <th></th>
     </tr>
@@ -26,13 +26,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.TileLayout.Description)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.OrgUnit)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.OrgName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TileLayout.Description)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.UserAccountId }) |

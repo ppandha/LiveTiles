@@ -19,7 +19,6 @@ namespace LiveTiles.DAL
         public DbSet<Twitter> Twitter { get; set; }
 
         public DbSet<TileLayout> TileLayout { get; set; }
-        public DbSet<TileType> TileType { get; set; }
         public DbSet<TileLayoutUserLink> TileLayoutUserLink { get; set; }
         public DbSet<UserAccount> UserAccount { get; set; }
 

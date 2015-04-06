@@ -15,6 +15,9 @@ namespace LiveTiles.Models
         [Required]
         public string Title { get; set; }
 
+        [Required]
+        public int RefreshPeriod { get; set; }
+
         // public virtual ICollection<TileLayoutUserLink> TileLayoutUserLink { get; set; }
 
     }

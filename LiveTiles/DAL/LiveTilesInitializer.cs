@@ -11,8 +11,8 @@ namespace LiveTiles.DAL
         {
             var calenders = new List<Calender>
             {
-            new Calender{ TileId = 1, TileType = 2, Title = "test calander", Contents = "test calender contents", StartTime = new DateTime(2015,6,21), EndTime = new DateTime(2015,6,21)},
-            new Calender{ TileId = 2, TileType = 2, Title = "test calander 2", Contents = "test calender contents 2", StartTime = new DateTime(2015,7,21), EndTime = new DateTime(2015,8,21)},
+            new Calender{ TileId = 1, TileType = 2, Title = "test calander", RefreshPeriod = 0, Contents = "test calender contents", StartTime = new DateTime(2015,6,21), EndTime = new DateTime(2015,6,21)},
+            new Calender{ TileId = 2, TileType = 2, Title = "test calander 2", RefreshPeriod = 0, Contents = "test calender contents 2", StartTime = new DateTime(2015,7,21), EndTime = new DateTime(2015,8,21)},
             };
 
             calenders.ForEach(s => context.Calendar.Add(s));
@@ -20,8 +20,8 @@ namespace LiveTiles.DAL
 
             var noticeboard = new List<Noticeboard>
             {
-            new Noticeboard{ TileId = 3, TileType = 1, Title = "noticeboard heading 1", Contents = "noticeboard contents 1"},
-            new Noticeboard{ TileId = 4, TileType = 1, Title = "noticeboard heading 2", Contents = "noticeboard contents 2"},
+            new Noticeboard{ TileId = 3, TileType = 1, Title = "noticeboard heading 1", RefreshPeriod = 0, Contents = "noticeboard contents 1"},
+            new Noticeboard{ TileId = 4, TileType = 1, Title = "noticeboard heading 2", RefreshPeriod = 0, Contents = "noticeboard contents 2"},
             };
 
             noticeboard.ForEach(s => context.Noticeboard.Add(s));
@@ -29,8 +29,8 @@ namespace LiveTiles.DAL
 
             var newsfeed = new List<Newsfeed>
             {
-            new Newsfeed{ TileId = 5, TileType = 3, Title = "newsfeed 1", RssUrl = "rss1"},
-            new Newsfeed{ TileId = 6, TileType = 3, Title = "newsfeed 1", RssUrl = "rss2"},
+            new Newsfeed{ TileId = 5, TileType = 3, Title = "newsfeed 1", RefreshPeriod = 0, RssUrl = "rss1"},
+            new Newsfeed{ TileId = 6, TileType = 3, Title = "newsfeed 1", RefreshPeriod = 0, RssUrl = "rss2"},
             };
 
             newsfeed.ForEach(s => context.Newsfeed.Add(s));
@@ -38,8 +38,8 @@ namespace LiveTiles.DAL
 
             var twitter = new List<Twitter>
             {
-            new Twitter{ TileId = 7, TileType = 4, Title = "twitter feed 1", SearchCriteria = "lord sugar"},
-            new Twitter{ TileId = 8, TileType = 4, Title = "twitter feed 2", SearchCriteria = "piers morgan"},
+            new Twitter{ TileId = 7, TileType = 4, Title = "twitter feed 1", RefreshPeriod = 0, SearchCriteria = "lord sugar"},
+            new Twitter{ TileId = 8, TileType = 4, Title = "twitter feed 2", RefreshPeriod = 0, SearchCriteria = "piers morgan"},
             };
 
             twitter.ForEach(s => context.Twitter.Add(s));

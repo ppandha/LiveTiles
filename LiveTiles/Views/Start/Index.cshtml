@@ -1,0 +1,34 @@
+﻿@model IEnumerable<LiveTiles.Models.UserAccount>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Select Organisation to Display</h2>
+<p></p>
+<table class="table">
+    <tr>
+         <th>
+            @Html.DisplayNameFor(model => model.OrgName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrgUnit)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrgName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrgUnit)
+        </td>
+        <td>
+            @Html.ActionLink("Start", "Start", new { id=item.UserAccountId })
+        </td>
+    </tr>
+}
+
+</table>

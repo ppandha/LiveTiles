@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<LiveTiles.Models.Noticeboard>
 
 @{
-    ViewBag.Title = "Noticeboards";
+    ViewBag.Title = "Index";
 }
 
-<h2>Noticeboards</h2>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,7 +12,13 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.TileType)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RefreshPeriod)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Contents)
@@ -23,15 +29,22 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.TileType)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RefreshPeriod)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Contents)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.TileId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.TileId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.TileId })
+            @Html.ActionLink("Details", "Details", new { id=item.TileId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TileId }) |
+            @Html.ActionLink("Items", "Index", "NoticeboardItems", new { id = item.TileId }, new { Name = "Example" })
         </td>
     </tr>
 }

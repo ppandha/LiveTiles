@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace LiveTiles.Models
@@ -7,5 +8,7 @@ namespace LiveTiles.Models
     {
         [Required]
         public string Contents { get; set; }
+
+        public virtual ICollection<NoticeboardItem> NoticeboardItem { get; set; }
     }
 }

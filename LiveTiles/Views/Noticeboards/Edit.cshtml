@@ -1,11 +1,10 @@
 ﻿@model LiveTiles.Models.Noticeboard
 
 @{
-    ViewBag.Title = "Edit Noticeboard";
+    ViewBag.Title = "Edit";
 }
 
-<h2>Edit Noticeboard</h2>
-
+<h2>Edit</h2>
 
 @using (Html.BeginForm())
 {
@@ -18,10 +17,26 @@
         @Html.HiddenFor(model => model.TileId)
 
         <div class="form-group">
+            @Html.LabelFor(model => model.TileType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TileType, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TileType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RefreshPeriod, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RefreshPeriod, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RefreshPeriod, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -44,7 +59,3 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

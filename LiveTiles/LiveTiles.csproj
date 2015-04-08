@@ -165,6 +165,7 @@
     <Compile Include="Controllers\CalendersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewsfeedsController.cs" />
+    <Compile Include="Controllers\NoticeboardItemsController.cs" />
     <Compile Include="Controllers\NoticeboardsController.cs" />
     <Compile Include="Controllers\StartController.cs" />
     <Compile Include="Controllers\TileLayoutUserLinksController.cs" />
@@ -177,6 +178,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Newsfeed.cs" />
+    <Compile Include="Models\NoticeboardItem.cs" />
     <Compile Include="Models\Tile.cs" />
     <Compile Include="Models\Noticeboard.cs" />
     <Compile Include="Models\TileType.cs" />
@@ -239,11 +241,6 @@
     <Content Include="Views\Calenders\Details.cshtml" />
     <Content Include="Views\Calenders\Edit.cshtml" />
     <Content Include="Views\Calenders\Index.cshtml" />
-    <Content Include="Views\Noticeboards\Create.cshtml" />
-    <Content Include="Views\Noticeboards\Delete.cshtml" />
-    <Content Include="Views\Noticeboards\Details.cshtml" />
-    <Content Include="Views\Noticeboards\Edit.cshtml" />
-    <Content Include="Views\Noticeboards\Index.cshtml" />
     <Content Include="Views\UserAccounts\Create.cshtml" />
     <Content Include="Views\UserAccounts\Delete.cshtml" />
     <Content Include="Views\UserAccounts\Details.cshtml" />
@@ -261,6 +258,16 @@
     <Content Include="Views\Shared\_NoticeBoardTilePartialView.cshtml" />
     <Content Include="Views\Shared\_TilePartialView.cshtml" />
     <Content Include="Views\Shared\_TwitterTilePartialView.cshtml" />
+    <Content Include="Views\NoticeboardItems\Create.cshtml" />
+    <Content Include="Views\NoticeboardItems\Delete.cshtml" />
+    <Content Include="Views\NoticeboardItems\Details.cshtml" />
+    <Content Include="Views\NoticeboardItems\Edit.cshtml" />
+    <Content Include="Views\NoticeboardItems\Index.cshtml" />
+    <Content Include="Views\Noticeboards\Create.cshtml" />
+    <Content Include="Views\Noticeboards\Delete.cshtml" />
+    <Content Include="Views\Noticeboards\Details.cshtml" />
+    <Content Include="Views\Noticeboards\Edit.cshtml" />
+    <Content Include="Views\Noticeboards\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

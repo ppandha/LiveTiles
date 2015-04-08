@@ -27,6 +27,14 @@ namespace LiveTiles.DAL
             noticeboard.ForEach(s => context.Noticeboard.Add(s));
             context.SaveChanges();
 
+            var noticeboarditems = new List<NoticeboardItem>
+            {
+                new NoticeboardItem{ NoticeboardId = 3, NoticeboardItemId = 1, Text = "item1"},
+                new NoticeboardItem{ NoticeboardId = 3, NoticeboardItemId = 2, Text = "item2"}
+            };
+            noticeboarditems.ForEach(s => context.NoticeboardItem.Add(s));
+            context.SaveChanges();
+
             var newsfeed = new List<Newsfeed>
             {
             new Newsfeed{ TileId = 5, TileType = 3, Title = "newsfeed 1", RefreshPeriod = 0, RssUrl = "rss1"},

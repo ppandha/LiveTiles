@@ -43,12 +43,11 @@ namespace LiveTiles.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TileId,Title,Contents")] Noticeboard noticeboard)
+        public ActionResult Create([Bind(Include = "TileId,TileType,Title,RefreshPeriod,Contents")] Noticeboard noticeboard)
         {
             if (ModelState.IsValid)
             {
-                noticeboard.TileType = 1;
-                db.Noticeboard.Add(noticeboard);
+                db.Tile.Add(noticeboard);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -76,7 +75,7 @@ namespace LiveTiles.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TileId,Title,Contents")] Noticeboard noticeboard)
+        public ActionResult Edit([Bind(Include = "TileId,TileType,Title,RefreshPeriod,Contents")] Noticeboard noticeboard)
         {
             if (ModelState.IsValid)
             {
@@ -108,7 +107,7 @@ namespace LiveTiles.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Noticeboard noticeboard = db.Noticeboard.Find(id);
-            db.Noticeboard.Remove(noticeboard);
+            db.Tile.Remove(noticeboard);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

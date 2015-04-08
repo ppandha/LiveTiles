@@ -1,0 +1,38 @@
+﻿@*@model IEnumerable<LiveTiles.Models.NoticeboardItem>*@
+@model List<object>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", new {id = (int)Model[0] })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Text
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model[1] as  IEnumerable<LiveTiles.Models.NoticeboardItem>) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Text)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.NoticeboardItemId }) |
+            @*@Html.ActionLink("Details", "Details", new { id=item.NoticeboardItemId }) |*@
+            @Html.ActionLink("Delete", "Delete", new { id=item.NoticeboardItemId })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "Noticeboards")
+</div>

@@ -62,7 +62,7 @@ namespace LiveTiles.Controllers
             TwitterCredentials.SetCredentials(credentials.AuthorizationKey, credentials.AuthorizationSecret,
                 credentials.ConsumerKey, credentials.ConsumerSecret);
 
-            // Search the tweets containing tweetinvi
+            // Search the tweets containing the user id and create a list to display in the view
             var items = Search.SearchTweets(tile.SearchCriteria);
             var results = new List<TweetDisplay>();
 

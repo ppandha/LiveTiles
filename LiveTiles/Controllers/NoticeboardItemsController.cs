@@ -59,7 +59,7 @@ namespace LiveTiles.Controllers
         [HttpPost]
         [ValidateInput(false)]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "NoticeboardItemId,NoticeboardId,Text")] NoticeboardItem noticeboardItem)
+        public ActionResult Create([Bind(Include = "NoticeboardItemId,NoticeboardId,Content")] NoticeboardItem noticeboardItem)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +92,7 @@ namespace LiveTiles.Controllers
         [HttpPost]
         [ValidateInput(false)]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "NoticeboardItemId,NoticeboardId,Text")] NoticeboardItem noticeboardItem)
+        public ActionResult Edit([Bind(Include = "NoticeboardItemId,NoticeboardId,Content")] NoticeboardItem noticeboardItem)
         {
             if (ModelState.IsValid)
             {

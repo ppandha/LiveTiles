@@ -11,17 +11,27 @@ namespace LiveTiles.DAL
         {
             var calenders = new List<Calender>
             {
-            new Calender{ TileId = 1, TileType = 2, Title = "test calander", RefreshPeriod = 0, Contents = "test calender contents", StartTime = new DateTime(2015,6,21), EndTime = new DateTime(2015,6,21)},
-            new Calender{ TileId = 2, TileType = 2, Title = "test calander 2", RefreshPeriod = 0, Contents = "test calender contents 2", StartTime = new DateTime(2015,7,21), EndTime = new DateTime(2015,8,21)},
+            new Calender{ TileId = 1, TileType = 2, Title = "test calender 1", RefreshPeriod = 0},
+            new Calender{ TileId = 2, TileType = 2, Title = "test calender 2", RefreshPeriod = 0},
             };
 
             calenders.ForEach(s => context.Calendar.Add(s));
             context.SaveChanges();
 
+            var calenderItems = new List<CalendarItem>
+            {
+            new CalendarItem{ CalendarItemId = 1, CalendarId = 1, Content = "test calender contents 1", Location = "Home", StartTime = new DateTime(2015,6,21), EndTime = new DateTime(2015,6,21)},
+            new CalendarItem{ CalendarItemId = 1, CalendarId = 1, Content = "test calender contents 2", Location = "Away", StartTime = new DateTime(2015,1,21), EndTime = new DateTime(2015,2,2)},
+            };
+
+            calenderItems.ForEach(s => context.CalendarItem.Add(s));
+            context.SaveChanges();
+
+
             var noticeboard = new List<Noticeboard>
             {
-            new Noticeboard{ TileId = 3, TileType = 1, Title = "noticeboard heading 1", RefreshPeriod = 0, Contents = "noticeboard contents 1"},
-            new Noticeboard{ TileId = 4, TileType = 1, Title = "noticeboard heading 2", RefreshPeriod = 0, Contents = "noticeboard contents 2"},
+            new Noticeboard{ TileId = 3, TileType = 1, Title = "noticeboard heading 1", RefreshPeriod = 5},
+            new Noticeboard{ TileId = 4, TileType = 1, Title = "noticeboard heading 2", RefreshPeriod = 5},
             };
 
             noticeboard.ForEach(s => context.Noticeboard.Add(s));
@@ -29,8 +39,8 @@ namespace LiveTiles.DAL
 
             var noticeboarditems = new List<NoticeboardItem>
             {
-                new NoticeboardItem{ NoticeboardId = 3, NoticeboardItemId = 1, Text = "item1"},
-                new NoticeboardItem{ NoticeboardId = 3, NoticeboardItemId = 2, Text = "item2"}
+                new NoticeboardItem{ NoticeboardId = 3, NoticeboardItemId = 1, Content = "<h1>Notice 1<h1><h2>content<h2>"},
+                new NoticeboardItem{ NoticeboardId = 3, NoticeboardItemId = 2, Content = "<h1>Notice 2<h1><h2>more content<h2>"}
             };
             noticeboarditems.ForEach(s => context.NoticeboardItem.Add(s));
             context.SaveChanges();

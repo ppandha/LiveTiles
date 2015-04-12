@@ -7,7 +7,7 @@ namespace LiveTiles.DAL
     public class LiveTilesContext : DbContext
     {
         public LiveTilesContext()
-            : base("LiveTilesContext4")
+            : base("LiveTilesContext6")
         {
             Database.SetInitializer(new DropCreateDatabaseAlways<LiveTilesContext>());
         }
@@ -17,6 +17,7 @@ namespace LiveTiles.DAL
         public DbSet<Newsfeed> Newsfeed { get; set; }
         public DbSet<Noticeboard> Noticeboard { get; set; }
         public DbSet<NoticeboardItem> NoticeboardItem { get; set; }
+        public DbSet<CalendarItem> CalendarItem { get; set; }
         public DbSet<Twitter> Twitter { get; set; }
 
         public DbSet<TileLayout> TileLayout { get; set; }

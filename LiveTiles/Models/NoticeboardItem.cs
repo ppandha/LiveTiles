@@ -7,7 +7,7 @@ namespace LiveTiles.Models
         public int NoticeboardItemId { get; set; }
 
         [Required]
-        public string Text { get; set; }
+        public string Content { get; set; }
 
         public int NoticeboardId { get; set; }
         public virtual Noticeboard Noticeboard { get; set; }

@@ -1,63 +1,42 @@
-﻿@model IEnumerable<LiveTiles.Models.Calender>
+﻿
+@model IEnumerable<LiveTiles.Models.Calender>
 
 @{
-    ViewBag.Title = "Calendars";
+    ViewBag.Title = "Calendar Index";
 }
 
-<h2>Calendars</h2>
+<h2>Calendar Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
-        @*<th>
-            @Html.DisplayNameFor(model => model.TileType)
-        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Contents)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Location)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EndTime)
+            @Html.DisplayNameFor(model => model.RefreshPeriod)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.TileType)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Contents)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Location)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EndTime)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TileId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TileId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TileId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RefreshPeriod)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.TileId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.TileId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TileId }) |
+                @Html.ActionLink("Items", "Index", "CalendarItems", new { id = item.TileId }, new { Name = "Example" })
+            </td>
+        </tr>
+    }
 
 </table>

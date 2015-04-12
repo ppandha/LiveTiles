@@ -1,11 +1,10 @@
-﻿@*@model IEnumerable<LiveTiles.Models.NoticeboardItem>*@
-@model List<object>
+﻿@model List<object>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Noticeboard Items";
 }
 
-<h2>Index</h2>
+<h2>Noticeboard Items</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create", new {id = (int)Model[0] })
@@ -21,11 +20,10 @@
 @foreach (var item in Model[1] as  IEnumerable<LiveTiles.Models.NoticeboardItem>) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Text)
+            @Html.DisplayFor(modelItem => item.Content)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.NoticeboardItemId }) |
-            @*@Html.ActionLink("Details", "Details", new { id=item.NoticeboardItemId }) |*@
             @Html.ActionLink("Delete", "Delete", new { id=item.NoticeboardItemId })
         </td>
     </tr>

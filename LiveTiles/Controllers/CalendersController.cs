@@ -43,7 +43,7 @@ namespace LiveTiles.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TileId,Title,Contents,Location,StartTime,EndTime")] Calender calender)
+        public ActionResult Create([Bind(Include = "TileId,TileType,Title,RefreshPeriod")] Calender calender)
         {
             if (ModelState.IsValid)
             {
@@ -76,7 +76,7 @@ namespace LiveTiles.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TileId,Title,Contents,Location,StartTime,EndTime")] Calender calender)
+        public ActionResult Edit([Bind(Include = "TileId,TileType,Title,RefreshPeriod")] Calender calender)
         {
             if (ModelState.IsValid)
             {

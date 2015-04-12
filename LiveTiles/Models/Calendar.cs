@@ -1,23 +1,23 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 
 namespace LiveTiles.Models
 {
     public class Calender : Tile
     {
-        [Required]
-        public string Contents { get; set; }
 
-        public string Location { get; set; }
+        // List of calendar items to display
+        public virtual ICollection<CalendarItem> CalendarItem { get; set; }
 
-        [Required]
-        [Display(Name = "Start Time")]
-        public DateTime StartTime { get; set; }
+        // Keep record of Item being displayed so we can cycle through them continuously
+        private static int _currentItem;
 
-        [Required]
-        [Display(Name = "End Time")]
-        public DateTime EndTime { get; set; }
-
+        [NotMapped]
+        public int CurrentItem
+        {
+            get { return _currentItem; }
+            set { _currentItem = value; }
+        }
     }
 }

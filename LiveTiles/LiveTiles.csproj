@@ -162,6 +162,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CalendarItemsController.cs" />
     <Compile Include="Controllers\CalendersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewsfeedsController.cs" />
@@ -178,6 +179,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Newsfeed.cs" />
+    <Compile Include="Models\CalendarItem.cs" />
     <Compile Include="Models\NoticeboardItem.cs" />
     <Compile Include="Models\Tile.cs" />
     <Compile Include="Models\Noticeboard.cs" />
@@ -199,6 +201,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -268,6 +271,11 @@
     <Content Include="Views\Noticeboards\Details.cshtml" />
     <Content Include="Views\Noticeboards\Edit.cshtml" />
     <Content Include="Views\Noticeboards\Index.cshtml" />
+    <Content Include="Views\CalendarItems\Create.cshtml" />
+    <Content Include="Views\CalendarItems\Delete.cshtml" />
+    <Content Include="Views\CalendarItems\Details.cshtml" />
+    <Content Include="Views\CalendarItems\Edit.cshtml" />
+    <Content Include="Views\CalendarItems\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,6 +1,7 @@
 ﻿using LiveTiles.DAL;
 using LiveTiles.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using Tweetinvi;
 using Tweetinvi.Core.Interfaces.Credentials;
@@ -33,7 +34,14 @@ namespace LiveTiles.Controllers
 
             if (tile.TileType == 1)
             {
-                return PartialView("_NoticeBoardTilePartialView", tile as Noticeboard);
+                // This is a noticeboard tile. Get the item to display using the currentitem count.
+                var noticeBoard = tile as Noticeboard;
+                var tileItems = db.NoticeboardItem.Where(a => a.NoticeboardId == tileId).Select(a => a).ToList();
+                var tileItem = tileItems[noticeBoard.CurrentItem];
+                // cycle around the items to display
+                noticeBoard.CurrentItem ++;
+                if (noticeBoard.CurrentItem == tileItems.Count) noticeBoard.CurrentItem = 0;
+                return PartialView("_NoticeBoardTilePartialView", tileItem );
             }
             if (tile.TileType == 2)
             {

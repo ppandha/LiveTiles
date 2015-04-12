@@ -57,6 +57,7 @@ namespace LiveTiles.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "NoticeboardItemId,NoticeboardId,Text")] NoticeboardItem noticeboardItem)
         {
@@ -89,6 +90,7 @@ namespace LiveTiles.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "NoticeboardItemId,NoticeboardId,Text")] NoticeboardItem noticeboardItem)
         {

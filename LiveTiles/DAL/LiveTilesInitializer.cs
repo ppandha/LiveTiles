@@ -76,17 +76,6 @@ namespace LiveTiles.DAL
             tileLayout.ForEach(s => context.TileLayout.Add(s));
             context.SaveChanges();
 
-            //var tileType = new List<TileType>
-            //{
-            //new TileType{ TileTypeId = 1, Type = "Noticeboard" },
-            //new TileType{ TileTypeId = 2, Type = "Calendar" },
-            //new TileType{ TileTypeId = 3, Type = "News" },
-            //new TileType{ TileTypeId = 4, Type = "Twitter" }
-            //};
-
-            //tileType.ForEach(s => context.TileType.Add(s));
-            //context.SaveChanges();
-
             var userAccount = new List<UserAccount>
             {
             new UserAccount{ UserAccountId = 1, OrgName = "Org1", OrgUnit = "OrgUnit1", TileLayoutId = 1},
@@ -109,8 +98,6 @@ namespace LiveTiles.DAL
 
             tileLayoutUserLink.ForEach(s => context.TileLayoutUserLink.Add(s));
             context.SaveChanges();
-
-
         }
     }
 }

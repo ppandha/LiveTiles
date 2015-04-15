@@ -5,7 +5,7 @@
 }
 
 <h2>Noticeboard Items</h2>
-
+<!-- Passes in the Noticeboard ID into the "Create New" action-->
 <p>
     @Html.ActionLink("Create New", "Create", new {id = (int)Model[0] })
 </p>
@@ -17,6 +17,7 @@
         <th></th>
     </tr>
 
+    <!--Iterate over a list of Noticeboard Items-->
 @foreach (var item in Model[1] as  IEnumerable<LiveTiles.Models.NoticeboardItem>) {
     <tr>
         <td>

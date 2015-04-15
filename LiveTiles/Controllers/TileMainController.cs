@@ -1,5 +1,6 @@
 ﻿using LiveTiles.DAL;
 using LiveTiles.Models;
+using LiveTiles.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -34,7 +35,8 @@ namespace LiveTiles.Controllers
 
             if (tile.TileType == 1)
             {
-                // This is a noticeboard tile. Get the item to display using the currentitem count.
+                // This is a noticeboard tile. Get the item to display using the current item count. 
+                // Searches through all Noticeboard Items for those belonging to this Noticeboard.
                 var noticeBoard = tile as Noticeboard;
                 var tileItems = db.NoticeboardItem.Where(a => a.NoticeboardId == tileId).Select(a => a).ToList();
                 var tileItem = tileItems[noticeBoard.CurrentItem];
@@ -49,7 +51,8 @@ namespace LiveTiles.Controllers
             }
             if (tile.TileType == 3)
             {
-                return PartialView("_NewsFeedTilePartialView", tile as Newsfeed);
+                var newsItems = RssReader.Read("http://news.google.com/?output=rss");
+                return PartialView("_NewsFeedTilePartialView", newsItems);
             }
             if (tile.TileType == 4)
             {

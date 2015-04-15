@@ -19,9 +19,10 @@ namespace LiveTiles.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             } 
-
+            // Finding the notices for this Noticeboard
+            // Build parameter list for Noticeboard Items view, tileID is required in the view for creating new Noticeboard Items 
             var pars =  new List<object>() {id, db.NoticeboardItem.Where(a => a.NoticeboardId == id).Select(a=>a).ToList()};
-
+         
             return View(pars);
         }
 
@@ -47,7 +48,8 @@ namespace LiveTiles.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
+            // create a new Noticeboard item to use in the form and set its Noticeboard ID to the current Noticeboard
+            // The Noticeboard ID is part of the Create form and will be passed back when the user clicks the save button.
             NoticeboardItem noticeboardItem = db.NoticeboardItem.Create();
             noticeboardItem.NoticeboardId = id.GetValueOrDefault();
             return View(noticeboardItem);
@@ -63,6 +65,7 @@ namespace LiveTiles.Controllers
         {
             if (ModelState.IsValid)
             {
+                // New Noticeboard item is added to the list of Noticeboard Items
                 db.NoticeboardItem.Add(noticeboardItem);
                 db.SaveChanges();
                 return RedirectToAction("Index", "NoticeboardItems", new { id = noticeboardItem.NoticeboardId });

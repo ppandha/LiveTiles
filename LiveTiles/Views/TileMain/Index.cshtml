@@ -18,11 +18,13 @@
 </head>
 <body>
 
-        @if (Model.TileLayout.Description == "2 x 2")
+    @if (Model.TileLayout.Description == "2 x 2")
     {
+        // get all tiles to display for this particular user account. 
         var tiles = Model.TileLayoutUserLink.ToList();
         <div class="row fill">
             <div class="col-md-6">
+                // JavaScript to load content from the server at the required referesh period.
                 <script type="text/javascript">
 
                     if (@tiles[0].Tile.RefreshPeriod == 0) {
@@ -32,11 +34,13 @@
                         var myVar0 = setInterval(function () { getView0(); }, @tiles[0].Tile.RefreshPeriod * 1000);
                     }
 
+                    // This function is called to load data from the server into the Tile using JQuery.
                     function getView0() {
                         $('#divResult0').load("@Url.Action("GetView", "TileMain", new { tileId = @tiles[0].Tile.TileId })");
                     }
 
                 </script>
+                // This div is loaded with data.
                 <div id='divResult0'>
                 </div>
             </div>

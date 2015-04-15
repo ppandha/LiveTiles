@@ -4,10 +4,13 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Notices</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    To add a new Noticeboard, click Create New, to change the Noticeboard refresh period click Edit. To add a new Notice to a Noticeboard click Items.
+</p>
+<p>
+     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
@@ -30,7 +33,6 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.TileId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TileId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.TileId }) |
             @Html.ActionLink("Items", "Index", "NoticeboardItems", new { id = item.TileId }, new { Name = "Example" })
         </td>

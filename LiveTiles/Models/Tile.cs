@@ -3,7 +3,7 @@
 
 namespace LiveTiles.Models
 {
-
+    // Tile parent class holding common tile configuration information.
     public abstract class Tile
     {
         [Key]
@@ -16,9 +16,6 @@ namespace LiveTiles.Models
         public string Title { get; set; }
 
         [Required]
-        public int RefreshPeriod { get; set; }
-
-        // public virtual ICollection<TileLayoutUserLink> TileLayoutUserLink { get; set; }
-
+        public int RefreshPeriod { get; set; }      
     }
 }

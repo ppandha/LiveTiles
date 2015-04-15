@@ -1,2 +1,18 @@
-﻿@model LiveTiles.Models.Newsfeed
-<h1>@Model.RssUrl </h1>
+﻿@model List<LiveTiles.ViewModels.RssNews>
+
+<div class="container">
+    <table class="table">
+        <tbody>
+            @foreach (var newsItem in @Model)
+            {
+                <tr>
+                    <td>@newsItem.PublicationDate</td>
+                    <td>
+                        <h5> @newsItem.Title</h5>
+                        @*<small>@Html.Raw(@newsItem.Description)</small>*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

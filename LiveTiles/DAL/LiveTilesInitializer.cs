@@ -47,8 +47,8 @@ namespace LiveTiles.DAL
 
             var newsfeed = new List<Newsfeed>
             {
-            new Newsfeed{ TileId = 5, TileType = 3, Title = "newsfeed 1", RefreshPeriod = 0, RssUrl = "rss1"},
-            new Newsfeed{ TileId = 6, TileType = 3, Title = "newsfeed 1", RefreshPeriod = 0, RssUrl = "rss2"},
+            new Newsfeed{ TileId = 5, TileType = 3, Title = "newsfeed 1", RefreshPeriod = 0, RssUrl = "http://news.google.com/?output=rss"},
+            new Newsfeed{ TileId = 6, TileType = 3, Title = "newsfeed 1", RefreshPeriod = 0, RssUrl = "http://news.google.com/?output=rss"},
             };
 
             newsfeed.ForEach(s => context.Newsfeed.Add(s));

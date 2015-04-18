@@ -3,11 +3,16 @@
 <div class="container">
     <table class="table">
         <tbody>
+            <tr>
+                <th>Start</th>
+                <th>Finish</th>
+                <th>Event</th>
+            </tr>
             @foreach (var calendarItem in @Model)
             {
                 <tr>
-                    <td>@calendarItem.StartTime</td>
-                    <td>@calendarItem.EndTime</td>
+                    <td>@calendarItem.StartTime.ToString("f")</td>
+                    <td>@calendarItem.EndTime.ToString("f")</td>
                     <td>
                         <h5> @calendarItem.Location</h5>
                         <small>@Html.Raw(@calendarItem.Content)</small>

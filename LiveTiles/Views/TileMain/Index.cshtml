@@ -2,30 +2,187 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <!DOCTYPE html>
-    .fill{
-    width:100%;
-    height:100%;
-    min-height:100%;
-
-    padding:10px;
-
-}
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>Tile Main</title>
 </head>
 <body>
+        
+        @if (Model.TileLayout.Description == "2 x 2")
+        {
+            // get all tiles to display for this particular user account.
+            var tiles = Model.TileLayoutUserLink.ToList();
+            <div class="panel-group">
 
-    @if (Model.TileLayout.Description == "2 x 2")
-    {
-        // get all tiles to display for this particular user account. 
-        var tiles = Model.TileLayoutUserLink.ToList();
-        <div class="row fill">
-            <div class="col-md-6">
-                // JavaScript to load content from the server at the required referesh period.
-                <script type="text/javascript">
+                <div class="row fill">
+                    <div class="col-lg-6">
+                        @*  JavaScript to load content from the server at the required refresh period.*@
+                        <script type="text/javascript">
+
+                        if (@tiles[0].Tile.RefreshPeriod == 0) {
+                            var myVar0 = setTimeout(function () { getView0(); }, 100);
+
+                        } else {
+                            var myVar0 = setInterval(function () { getView0(); }, @tiles[0].Tile.RefreshPeriod * 1000);
+                        }
+
+                        //This function is called to load data from the server into the Tile using JQuery.
+                        // Call the GetView action on the TileMain controller passing it the tileId as a parameter
+                        function getView0() {
+                            $('#divResult0').load("@Url.Action("GetView", "TileMain", new { tileId = @tiles[0].Tile.TileId })");
+                        }
+
+                        </script>
+                        @*This div is loaded with data.*@
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">@tiles[0].TileType</div>
+                            <div id='divResult0' class="panel-body">Panel Content</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <script type="text/javascript">
+                        if (@tiles[1].Tile.RefreshPeriod == 0) {
+                            var myVar1 = setTimeout(function () { getView1(); }, 100);
+
+                        } else {
+                            var myVar1 = setInterval(function () { getView1(); }, @tiles[1].Tile.RefreshPeriod * 1000);
+                        }
+
+                        function getView1() {
+                            $('#divResult1').load("@Url.Action("GetView", "TileMain", new { tileId = @tiles[1].Tile.TileId })");
+                        }
+                        </script>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">@tiles[1].TileType</div>
+                            <div id='divResult1' class="panel-body">Panel Content</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row fill">
+                    <div class="col-lg-6">
+                        <script type="text/javascript">
+                        if (@tiles[2].Tile.RefreshPeriod == 0) {
+                            var myVar2 = setTimeout(function () { getView2(); }, 100);
+
+                        } else {
+                            var myVar2 = setInterval(function () { getView2(); }, @tiles[2].Tile.RefreshPeriod * 1000);
+                        }
+
+                        function getView2() {
+                            $('#divResult2').load("@Url.Action("GetView", "TileMain", new { tileId = @tiles[2].Tile.TileId })");
+                        }
+                        </script>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">@tiles[2].TileType</div>
+                            <div id='divResult2' class="panel-body">Panel Content</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <script type="text/javascript">
+                        if (@tiles[3].Tile.RefreshPeriod == 0) {
+                            var myVar3 = setTimeout(function () { getView3(); }, 100);
+
+                        } else {
+                            var myVar3 = setInterval(function () { getView3(); }, @tiles[3].Tile.RefreshPeriod * 1000);
+                        }
+
+                        function getView3() {
+                            $('#divResult3').load("@Url.Action("GetView", "TileMain", new { tileId = @tiles[3].Tile.TileId })");
+                        }
+                        </script>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">@tiles[3].TileType</div>
+                            <div id='divResult3' class="panel-body">Panel Content</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+                @* -------------------------------------------------------------------------------------------------------------------------------*@
+
+            @if (Model.TileLayout.Description == "1 x 2")
+            {
+                var tiles = Model.TileLayoutUserLink.ToList();
+                <div class="panel-group">
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <script type="text/javascript">
+
+                                        if (@tiles[0].Tile.RefreshPeriod == 0) {
+                                            var myVar0 = setTimeout(function () { getView0(); }, 100);
+
+                                        } else {
+                                            var myVar0 = setInterval(function () { getView0(); }, @tiles[0].Tile.RefreshPeriod * 1000);
+                                        }
+
+                                        function getView0() {
+                                            $('#divResult0').load("@Url.Action("GetView", "TileMain", new { tileId = @tiles[0].Tile.TileId })");
+                                        }
+
+                            </script>
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">@tiles[0].TileType</div>
+                                <div id='divResult0' class="panel-body">Panel Content</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <script type="text/javascript">
+                            if (@tiles[1].Tile.RefreshPeriod == 0) {
+                                var myVar1 = setTimeout(function () { getView1(); }, 100);
+
+                            } else {
+                                var myVar1 = setInterval(function () { getView1(); }, @tiles[1].Tile.RefreshPeriod * 1000);
+                            }
+
+                            function getView1() {
+                                $('#divResult1').load("@Url.Action("GetView", "TileMain", new { tileId = @tiles[1].Tile.TileId })");
+                            }
+                            </script>
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">@tiles[1].TileType</div>
+                                <div id='divResult1' class="panel-body">Panel Content</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <script type="text/javascript">
+                            if (@tiles[2].Tile.RefreshPeriod == 0) {
+                                var myVar2 = setTimeout(function () { getView2(); }, 100);
+
+                            } else {
+                                var myVar2 = setInterval(function () { getView2(); }, @tiles[2].Tile.RefreshPeriod * 1000);
+                            }
+
+                            function getView2() {
+                                $('#divResult2').load("@Url.Action("GetView", "TileMain", new { tileId = @tiles[2].Tile.TileId })");
+                            }
+                            </script>
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">@tiles[2].TileType</div>
+                                <div id='divResult2' class="panel-body">Panel Content</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+
+                    @* -------------------------------------------------------------------------------------------------------------------------------*@
+
+                    @if (Model.TileLayout.Description == "2 x 1")
+                    {
+                        var tiles = Model.TileLayoutUserLink.ToList();
+                        <div class="panel-group">
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <script type="text/javascript">
 
                     if (@tiles[0].Tile.RefreshPeriod == 0) {
                         var myVar0 = setTimeout(function () { getView0(); }, 100);
@@ -34,18 +191,18 @@
                         var myVar0 = setInterval(function () { getView0(); }, @tiles[0].Tile.RefreshPeriod * 1000);
                     }
 
-                    // This function is called to load data from the server into the Tile using JQuery.
                     function getView0() {
                         $('#divResult0').load("@Url.Action("GetView", "TileMain", new { tileId = @tiles[0].Tile.TileId })");
                     }
 
-                </script>
-                // This div is loaded with data.
-                <div id='divResult0'>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <script type="text/javascript">
+                                    </script>
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading">@tiles[0].TileType</div>
+                                        <div id='divResult0' class="panel-body">Panel Content</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <script type="text/javascript">
                     if (@tiles[1].Tile.RefreshPeriod == 0) {
                         var myVar1 = setTimeout(function () { getView1(); }, 100);
 
@@ -56,91 +213,16 @@
                     function getView1() {
                         $('#divResult1').load("@Url.Action("GetView", "TileMain", new { tileId = @tiles[1].Tile.TileId })");
                     }
-                </script>
-                <div id='divResult1'>
-                </div>
-            </div>
-        </div>
-    <div class="row fill">
-        <div class="col-md-6">
-            <script type="text/javascript">
-                if (@tiles[2].Tile.RefreshPeriod == 0) {
-                    var myVar2 = setTimeout(function () { getView2(); }, 100);
-
-                } else {
-                    var myVar2 = setInterval(function () { getView2(); }, @tiles[2].Tile.RefreshPeriod * 1000);
-                }
-
-                function getView2() {
-                    $('#divResult2').load("@Url.Action("GetView", "TileMain", new { tileId = @tiles[2].Tile.TileId })");
-                }
-            </script>
-            <div id='divResult2'>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <script type="text/javascript">
-                if (@tiles[3].Tile.RefreshPeriod == 0) {
-                    var myVar3 = setTimeout(function () { getView3(); }, 100);
-
-                } else {
-                    var myVar3 = setInterval(function () { getView3(); }, @tiles[3].Tile.RefreshPeriod * 1000);
-                }
-
-                function getView3() {
-                    $('#divResult3').load("@Url.Action("GetView", "TileMain", new { tileId = @tiles[3].Tile.TileId })");
-                }
-            </script>
-            <div id='divResult3'>
-            </div>
-        </div>
-    </div>
-    }
-
-   @* -------------------------------------------------------------------------------------------------------------------------------*@
-
-    @if (Model.TileLayout.Description == "1 x 2")
-    {
-        var tiles = Model.TileLayoutUserLink.ToList();
-        <div class="row">
-            <div class="col-md-12">
-                <script type="text/javascript">
-
-                    if (@tiles[0].Tile.RefreshPeriod == 0) {
-                        var myVar0 = setTimeout(function () { getView0(); }, 100);
-
-                    } else {
-                        var myVar0 = setInterval(function () { getView0(); }, @tiles[0].Tile.RefreshPeriod * 1000);
-                    }
-
-                    function getView0() {
-                        $('#divResult0').load("@Url.Action("GetView", "TileMain", new { tileId = @tiles[0].Tile.TileId })");
-                    }
-
-                </script>
-                <div id='divResult0'>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <script type="text/javascript">
-                    if (@tiles[1].Tile.RefreshPeriod == 0) {
-                        var myVar1 = setTimeout(function () { getView1(); }, 100);
-
-                    } else {
-                        var myVar1 = setInterval(function () { getView1(); }, @tiles[1].Tile.RefreshPeriod * 1000);
-                    }
-
-                    function getView1() {
-                        $('#divResult1').load("@Url.Action("GetView", "TileMain", new { tileId = @tiles[1].Tile.TileId })");
-                    }
-                </script>
-                <div id='divResult1'>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <script type="text/javascript">
+                                    </script>
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading">@tiles[1].TileType</div>
+                                        <div id='divResult1' class="panel-body">Panel Content</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <script type="text/javascript">
                     if (@tiles[2].Tile.RefreshPeriod == 0) {
                         var myVar2 = setTimeout(function () { getView2(); }, 100);
 
@@ -151,74 +233,17 @@
                     function getView2() {
                         $('#divResult2').load("@Url.Action("GetView", "TileMain", new { tileId = @tiles[2].Tile.TileId })");
                     }
-                </script>
-                <div id='divResult2'>
-                </div>
-            </div>
-        </div>
-    }
+                                    </script>
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading">@tiles[2].TileType</div>
+                                        <div id='divResult2' class="panel-body">Panel Content</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
 
-    @* -------------------------------------------------------------------------------------------------------------------------------*@
-
-    @if (Model.TileLayout.Description == "2 x 1")
-    {
-        var tiles = Model.TileLayoutUserLink.ToList();
-        <div class="row">
-            <div class="col-md-6">
-                <script type="text/javascript">
-
-                    if (@tiles[0].Tile.RefreshPeriod == 0) {
-                        var myVar0 = setTimeout(function () { getView0(); }, 100);
-
-                    } else {
-                        var myVar0 = setInterval(function () { getView0(); }, @tiles[0].Tile.RefreshPeriod * 1000);
                     }
-
-                    function getView0() {
-                        $('#divResult0').load("@Url.Action("GetView", "TileMain", new { tileId = @tiles[0].Tile.TileId })");
-                    }
-
-                </script>
-                <div id='divResult0'>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <script type="text/javascript">
-                    if (@tiles[1].Tile.RefreshPeriod == 0) {
-                        var myVar1 = setTimeout(function () { getView1(); }, 100);
-
-                    } else {
-                        var myVar1 = setInterval(function () { getView1(); }, @tiles[1].Tile.RefreshPeriod * 1000);
-                    }
-
-                    function getView1() {
-                        $('#divResult1').load("@Url.Action("GetView", "TileMain", new { tileId = @tiles[1].Tile.TileId })");
-                    }
-                </script>
-                <div id='divResult1'>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <script type="text/javascript">
-                    if (@tiles[2].Tile.RefreshPeriod == 0) {
-                        var myVar2 = setTimeout(function () { getView2(); }, 100);
-
-                    } else {
-                        var myVar2 = setInterval(function () { getView2(); }, @tiles[2].Tile.RefreshPeriod * 1000);
-                    }
-
-                    function getView2() {
-                        $('#divResult2').load("@Url.Action("GetView", "TileMain", new { tileId = @tiles[2].Tile.TileId })");
-                    }
-                </script>
-                <div id='divResult2'>
-                </div>
-            </div>
-        </div>
-    }
 
 
 </body>

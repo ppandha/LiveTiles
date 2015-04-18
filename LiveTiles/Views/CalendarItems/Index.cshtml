@@ -23,9 +23,6 @@
         <th>
             EndTime
         </th>
-        <th>
-            CalendarId
-        </th>
         <th></th>
     </tr>
 
@@ -44,12 +41,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.EndTime)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CalendarId)
-            </td>
+ 
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.CalendarItemId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.CalendarItemId }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.CalendarItemId })
             </td>
         </tr>

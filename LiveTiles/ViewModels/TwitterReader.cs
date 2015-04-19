@@ -23,7 +23,7 @@ namespace LiveTiles.ViewModels
                 credentials.ConsumerKey, credentials.ConsumerSecret);
 
             // Search the tweets containing the user id and create a list to display in the view
-            var items = Search.SearchTweets(searchCriteria).ToList();
+            var items = Search.SearchTweets(searchCriteria).OrderBy( a => a.CreatedAt ).ToList();
             var results = new List<TweetDisplay>();
 
             // Make a list of tweet items for using in the view

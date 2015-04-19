@@ -16,14 +16,15 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.TileId)
+         @Html.HiddenFor(model => model.TileType)
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.TileType, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.TileType, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.TileType, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
         <div class="form-group">
             @Html.LabelFor(model => model.RefreshPeriod, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">

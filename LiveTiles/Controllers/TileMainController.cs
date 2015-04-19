@@ -1,4 +1,5 @@
-﻿using LiveTiles.DAL;
+﻿using System.Globalization;
+using LiveTiles.DAL;
 using LiveTiles.Models;
 using LiveTiles.ViewModels;
 using System.Linq;
@@ -27,41 +28,38 @@ namespace LiveTiles.Controllers
 
             if (tile.TileType == 1)
             {
-                // This is a noticeboard tile. Get the item to display using the current item count. 
-                // Searches through all Noticeboard Items for those belonging to this Noticeboard.
+                // this is a noticeboard tile.
                 var noticeBoard = tile as Noticeboard;
-                var tileItems = db.NoticeboardItem.Where(a => a.NoticeboardId == tileId).Select(a => a).ToList();
-                var tileItem = tileItems[noticeBoard.CurrentItem];
-                // cycle around the items to display
-                noticeBoard.CurrentItem ++;
-                if (noticeBoard.CurrentItem == tileItems.Count) noticeBoard.CurrentItem = 0;
-                return PartialView("_NoticeBoardTilePartialView", tileItem );
+                // get Noticeboard Items ViewModel. 
+                var noticeboardItem = NoticeboardReader.GetNoticeboardItem(noticeBoard, db);
+                // pass ViewModel to the view.
+                return PartialView("_NoticeBoardTilePartialView", noticeboardItem);
             }
             if (tile.TileType == 2)
             {
-                // Get all the calendar items for this calendar
-                var calendarItems = db.CalendarItem.Where(a => a.CalendarId == tileId).Select(a => a).ToList();
-
-                // Now the items for this week
-
-                // TODO
-                
+                // this is a calendar tile.
+                var calender = tile as Calender;
+                // get Calendar Items ViewModel.
+                var calendarItems = CalendarReader.GetCalendarItems(calender, db);
+                // pass ViewModel to the view.
                 return PartialView("_CalendarTilePartialView", calendarItems);
             }
             if (tile.TileType == 3)
             {
+                // this is a newsfeed tile.
                 var newstile = tile as Newsfeed;
-
+                // get Newsfeed Items ViewModel.    
                 var newsItems = RssReader.Read(newstile.RssUrl);
-
+                // pass ViewModel to the view.
                 return PartialView("_NewsFeedTilePartialView", newsItems);
             }
             if (tile.TileType == 4)
             {
+                // this is the a Twitter tile.
                 var twitterTile = tile as Twitter;
-
+                // get Twitter Items ViewModel.
                 var tweets = TwitterReader.GetTweets(twitterTile.SearchCriteria);
-
+                // pass ViewModel to the view. 
                 return PartialView("_TwitterTilePartialView", tweets);
             }
 

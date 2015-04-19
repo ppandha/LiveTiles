@@ -43,7 +43,7 @@ namespace LiveTiles.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TileId,TileType,Title,RssUrl")] Newsfeed newsfeed)
+        public ActionResult Create([Bind(Include = "TileId,TileType,Title,RssUrl,RefreshPeriod")] Newsfeed newsfeed)
         {
             if (ModelState.IsValid)
             {
@@ -75,7 +75,7 @@ namespace LiveTiles.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TileId,TileType,Title,RssUrl")] Newsfeed newsfeed)
+        public ActionResult Edit([Bind(Include = "TileId,TileType,Title,RssUrl,RefreshPeriod")] Newsfeed newsfeed)
         {
             if (ModelState.IsValid)
             {

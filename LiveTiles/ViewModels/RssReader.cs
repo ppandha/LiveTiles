@@ -16,10 +16,11 @@ namespace LiveTiles.ViewModels
     {
         public static List<RssNews> Read(string url)
         {
+            // use webClient (.NET library) to make request 
             var webClient = new WebClient();
-
+            // get the news feed in an XML string.
             var result = webClient.DownloadString(url);
-
+            // use .NET XML library to parse the resulting XML string.
             var document = XDocument.Parse(result);
 
             // turn the XML results into a list of news items, take only the first 5 items

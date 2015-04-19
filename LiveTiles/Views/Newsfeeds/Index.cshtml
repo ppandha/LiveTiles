@@ -35,6 +35,9 @@
             @Html.DisplayFor(modelItem => item.RssUrl)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.RefreshPeriod)
+        </td>
+        <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.TileId }) |
             @Html.ActionLink("Details", "Details", new { id=item.TileId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.TileId })

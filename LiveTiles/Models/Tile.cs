@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 
 namespace LiveTiles.Models
@@ -10,6 +11,7 @@ namespace LiveTiles.Models
         public int TileId { get; set; }
 
         [Required]
+        [HiddenInput(DisplayValue = false)]
         public int TileType { get; set; }
 
         [Required]

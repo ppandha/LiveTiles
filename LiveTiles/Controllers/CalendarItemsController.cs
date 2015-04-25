@@ -13,10 +13,6 @@ namespace LiveTiles.Controllers
         private LiveTilesContext db = new LiveTilesContext();
 
         // GET: CalendarItems
-        //public ActionResult Index()
-        //{
-        //    return View(db.CalendarItem.ToList());
-        //}
         public ActionResult Index(int? id)
         {
             if (id == null)
@@ -29,26 +25,7 @@ namespace LiveTiles.Controllers
             return View(pars);
         }
 
-        // GET: CalendarItems/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            CalendarItem calendarItem = db.CalendarItem.Find(id);
-            if (calendarItem == null)
-            {
-                return HttpNotFound();
-            }
-            return View(calendarItem);
-        }
-
         // GET: CalendarItems/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
         public ActionResult Create(int? id)
         {
             if (id == null)
@@ -60,22 +37,11 @@ namespace LiveTiles.Controllers
             calendarItem.CalendarId = id.GetValueOrDefault();
             return View(calendarItem);
         }
-        // POST: CalendarItems/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "CalendarItemId,Content,Location,StartTime,EndTime,CalendarId")] CalendarItem calendarItem)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.CalendarItem.Add(calendarItem);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
 
-        //    return View(calendarItem);
-        //}
+        // POST: CalendarItems/Create
+        [HttpPost]
+        [ValidateInput(false)]
+        [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CalendarItemId,CalendarId,Content,Location,StartTime,EndTime")] CalendarItem calendarItem)
         {
             if (ModelState.IsValid)
@@ -104,8 +70,6 @@ namespace LiveTiles.Controllers
         }
 
         // POST: CalendarItems/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "CalendarItemId,Content,Location,StartTime,EndTime,CalendarId")] CalendarItem calendarItem)

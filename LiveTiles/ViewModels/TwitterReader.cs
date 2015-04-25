@@ -22,19 +22,18 @@ namespace LiveTiles.ViewModels
             TwitterCredentials.SetCredentials(credentials.AuthorizationKey, credentials.AuthorizationSecret,
                 credentials.ConsumerKey, credentials.ConsumerSecret);
 
-            // Search the tweets containing the user id and create a list to display in the view
-            var items = Search.SearchTweets(searchCriteria).OrderBy( a => a.CreatedAt ).ToList();
+            // Search the tweets containing the search criteria and create a list to display in the view
+            var items = Search.SearchTweets(searchCriteria).OrderByDescending( a => a.CreatedAt ).ToList().Take(4);
+
+            // create an empty list
             var results = new List<TweetDisplay>();
 
             // Make a list of tweet items for using in the view
-            for (int i = 0; i < items.Count(); i++)
+            foreach(var item in items)  
             {
-                // only use the first 5 items
-                if (i > 4) break;
-
-                var item = items[i];
                 var td = new TweetDisplay
                 {
+                    CreatedAt = item.CreatedAt,
                     Author = item.Creator.Name,
                     Tweet = item.Text,
                     ImageUrl = item.Creator.ProfileImageUrl

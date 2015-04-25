@@ -10,7 +10,8 @@
                     <td><img src="@t.ImageUrl" width="42" height="42"></td>
                     <td>
                         <b>@t.Author</b>
-                        <small>@t.Tweet</small>
+                        <small>@t.CreatedAt.ToString("g")</small>
+                        <h5>@t.Tweet</h5>
                     </td>
                 </tr>
             }

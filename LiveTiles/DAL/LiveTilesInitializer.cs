@@ -39,8 +39,8 @@ namespace LiveTiles.DAL
 
             var noticeboarditems = new List<NoticeboardItem>
             {
-                new NoticeboardItem{ NoticeboardId = 3, NoticeboardItemId = 1, Content = "<h1>Notice 1<h1><h2>content<h2>"},
-                new NoticeboardItem{ NoticeboardId = 3, NoticeboardItemId = 2, Content = "<h1>Notice 2<h1><h2>more content<h2>"}
+                new NoticeboardItem{ NoticeboardId = 3, NoticeboardItemId = 1, Content = "<h1>Notice 1<h1><h2>Uxbridge Notices1<h2>"},
+                new NoticeboardItem{ NoticeboardId = 3, NoticeboardItemId = 2, Content = "<h1>Notice 2<h1><h2>Uxbridge Notices2<h2>"}
             };
             noticeboarditems.ForEach(s => context.NoticeboardItem.Add(s));
             context.SaveChanges();
@@ -56,8 +56,8 @@ namespace LiveTiles.DAL
 
             var twitter = new List<Twitter>
             {
-            new Twitter{ TileId = 7, TileType = 4, Title = "twitter feed 1", RefreshPeriod = 0, SearchCriteria = "lord sugar"},
-            new Twitter{ TileId = 8, TileType = 4, Title = "twitter feed 2", RefreshPeriod = 0, SearchCriteria = "piers morgan"},
+            new Twitter{ TileId = 7, TileType = 4, Title = "twitter feed 1", RefreshPeriod = 0, SearchCriteria = "audi"},
+            new Twitter{ TileId = 8, TileType = 4, Title = "twitter feed 2", RefreshPeriod = 0, SearchCriteria = "super car"},
             };
 
             twitter.ForEach(s => context.Twitter.Add(s));
@@ -78,8 +78,8 @@ namespace LiveTiles.DAL
 
             var userAccount = new List<UserAccount>
             {
-            new UserAccount{ UserAccountId = 1, OrgName = "Org1", OrgUnit = "OrgUnit1", TileLayoutId = 1},
-            new UserAccount{ UserAccountId = 2, OrgName = "Org2", OrgUnit = "OrgUnit2", TileLayoutId = 2}
+            new UserAccount{ UserAccountId = 1, OrgName = "Uxbridge showroom", TileLayoutId = 1},
+            new UserAccount{ UserAccountId = 2, OrgName = "Hatfield showrooom",  TileLayoutId = 2}
             };
 
             userAccount.ForEach(s => context.UserAccount.Add(s));

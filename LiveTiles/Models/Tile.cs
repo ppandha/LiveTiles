@@ -17,6 +17,7 @@ namespace LiveTiles.Models
         [Required]
         public string Title { get; set; }
 
+        [Display(Name = "Refresh Period (seconds)")]
         [Required]
         public int RefreshPeriod { get; set; }      
     }

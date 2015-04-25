@@ -1,8 +1,6 @@
-﻿using System.Globalization;
-using LiveTiles.DAL;
+﻿using LiveTiles.DAL;
 using LiveTiles.Models;
 using LiveTiles.ViewModels;
-using System.Linq;
 using System.Web.Mvc;
 
 namespace LiveTiles.Controllers
@@ -32,6 +30,8 @@ namespace LiveTiles.Controllers
                 var noticeBoard = tile as Noticeboard;
                 // get Noticeboard Items ViewModel. 
                 var noticeboardItem = NoticeboardReader.GetNoticeboardItem(noticeBoard, db);
+                if (noticeboardItem == null)
+                    return PartialView("_ErrorPartialView", "Cannot find noticeboard item, check your configuration");
                 // pass ViewModel to the view.
                 return PartialView("_NoticeBoardTilePartialView", noticeboardItem);
             }

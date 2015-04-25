@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using LiveTiles.DAL;
+using LiveTiles.Models;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using LiveTiles.DAL;
-using LiveTiles.Models;
 
 namespace LiveTiles.Controllers
 {
@@ -46,8 +42,6 @@ namespace LiveTiles.Controllers
         }
 
         // POST: TileLayoutUserLinks/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "TileLayoutUserLinkId,UserAccountId,TileId")] TileLayoutUserLink tileLayoutUserLink)
@@ -82,8 +76,6 @@ namespace LiveTiles.Controllers
         }
 
         // POST: TileLayoutUserLinks/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "TileLayoutUserLinkId,UserAccountId,TileId")] TileLayoutUserLink model)

@@ -8,6 +8,8 @@
 <h2>Calendar Events</h2>
 
 <p>
+    To add a new Calendar, click 'Create New', to change the Calendar refresh period click 'Edit'. To add a new event to a Calendar click 'Items'.
+</p><p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
@@ -33,7 +35,7 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.TileId }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.TileId }) |
-                @Html.ActionLink("Items", "Index", "CalendarItems", new { id = item.TileId }, new { Name = "Example" })
+                @Html.ActionLink("Items", "Index", "CalendarItems", new { id = item.TileId }, new { Name = "" })
             </td>
         </tr>
     }

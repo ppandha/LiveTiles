@@ -1,8 +1,6 @@
 ﻿using LiveTiles.DAL;
 using LiveTiles.Models;
-using System.Collections.Generic;
 using System.Linq;
-using Tweetinvi;
 
 namespace LiveTiles.ViewModels
 {
@@ -13,6 +11,10 @@ namespace LiveTiles.ViewModels
             // This is a noticeboard tile. Get the item to display using the current item count. 
             // Searches through all Noticeboard Items for those belonging to this Noticeboard.
             var tileItems = db.NoticeboardItem.Where(a => a.NoticeboardId == noticeBoard.TileId).Select(a => a).ToList();
+
+            if (tileItems.Count == 0)
+                return null;
+
             var tileItem = tileItems[noticeBoard.CurrentItem];
             // cycle around the items to display
             noticeBoard.CurrentItem++;

@@ -19,21 +19,6 @@ namespace LiveTiles.Controllers
             return View(userAccount.ToList());
         }
 
-        // GET: UserAccounts/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            UserAccount userAccount = db.UserAccount.Find(id);
-            if (userAccount == null)
-            {
-                return HttpNotFound();
-            }
-            return View(userAccount);
-        }
-
         // GET: UserAccounts/Create
         public ActionResult Create()
         {
@@ -42,11 +27,9 @@ namespace LiveTiles.Controllers
         }
 
         // POST: UserAccounts/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserAccountId,OrgUnit,OrgName,TileLayoutId")] UserAccount userAccount)
+        public ActionResult Create([Bind(Include = "UserAccountId,OrgName,TileLayoutId")] UserAccount userAccount)
         {
             if (ModelState.IsValid)
             {
@@ -99,11 +82,9 @@ namespace LiveTiles.Controllers
         }
 
         // POST: UserAccounts/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserAccountId,OrgUnit,OrgName,TileLayoutId")] UserAccount userAccount)
+        public ActionResult Edit([Bind(Include = "UserAccountId,OrgName,TileLayoutId")] UserAccount userAccount)
         {
             if (ModelState.IsValid)
             {

@@ -8,11 +8,7 @@ namespace LiveTiles.Models
         [Required]
         public int UserAccountId { get; set; }
 
-        [Required]
-        [Display(Name = "Organization Unit")]
-        public string OrgUnit { get; set; }
-
-        [Display(Name = "Organization Name")]
+        [Display(Name = "Location")]
         public string OrgName { get; set; }
 
         [Required]

@@ -1,10 +1,12 @@
 ﻿@model IEnumerable<LiveTiles.Models.Twitter>
 
 @{
-    ViewBag.Title = "Twitter Feeds";
+    ViewBag.Title = "Twitter Searches";
 }
-
-<h2>Twitter Ids</h2>
+    <h2>Twitter Search</h2>
+<p>
+    To add a new Twitter search criteria click 'Create New'. To change a current search criteria click 'Edit'.
+</p>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -35,11 +37,10 @@
             @Html.DisplayFor(modelItem => item.SearchCriteria)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.RefreshPeriod)
+            @Html.HiddenFor(modelItem => item.RefreshPeriod)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.TileId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TileId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.TileId })
         </td>
     </tr>

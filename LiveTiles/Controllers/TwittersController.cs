@@ -17,21 +17,6 @@ namespace LiveTiles.Controllers
             return View(db.Twitter.ToList());
         }
 
-        // GET: Twitters/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Twitter twitter = db.Twitter.Find(id);
-            if (twitter == null)
-            {
-                return HttpNotFound();
-            }
-            return View(twitter);
-        }
-
         // GET: Twitters/Create
         public ActionResult Create()
         {
@@ -39,8 +24,6 @@ namespace LiveTiles.Controllers
         }
 
         // POST: Twitters/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "TileId,TileType,Title,SearchCriteria,RefreshPeriod")] Twitter twitter)

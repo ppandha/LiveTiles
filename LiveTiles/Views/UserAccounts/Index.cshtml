@@ -5,15 +5,15 @@
 }
 
 <h2>User Accounts</h2>
+<p>
+    To create a new account, click 'Create New', to change the tiles refresh period or other account details click 'Edit' on your account. 
+</p>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.OrgUnit)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.OrgName)
         </th>
@@ -26,9 +26,6 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.OrgUnit)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.OrgName)
         </td>
         <td>
@@ -36,7 +33,6 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.UserAccountId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.UserAccountId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.UserAccountId })
         </td>
     </tr>

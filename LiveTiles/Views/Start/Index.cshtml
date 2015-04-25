@@ -4,15 +4,12 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Select Organisation to Display</h2>
-<p></p>
+<h2>Select your display</h2>
+<p>Click 'Start' on the your display to start the live tiles.</p>
 <table class="table">
     <tr>
          <th>
             @Html.DisplayNameFor(model => model.OrgName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OrgUnit)
         </th>
         <th></th>
     </tr>
@@ -21,9 +18,6 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.OrgName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrgUnit)
         </td>
         <td>
             @Html.ActionLink("Start", "Start", new { id=item.UserAccountId })

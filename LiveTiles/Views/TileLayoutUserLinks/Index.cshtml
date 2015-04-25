@@ -5,16 +5,14 @@
 }
 
 <h2>Layouts</h2>
+<p>Once you have chosen your configuration in User Accounts, the number of tiles allocated to you will be below e.g. 2X2 = 4 tiles. Each tile will have a default feed attached to it, this can be changed by clicking 'Edit'.</p>
 
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.UserAccount.OrgName)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserAccount.OrgUnit)
-        </th>
-        <th>
+         <th>
             @Html.DisplayNameFor(model => model.Tile.Title)
         </th>
        <th></th>
@@ -26,14 +24,10 @@
             @Html.DisplayFor(modelItem => item.UserAccount.OrgName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.UserAccount.OrgUnit)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Tile.Title)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TileLayoutUserLinkId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TileLayoutUserLinkId }) |
+            @Html.ActionLink("Edit", "Edit", new { id=item.TileLayoutUserLinkId }) 
         </td>
     </tr>
 }

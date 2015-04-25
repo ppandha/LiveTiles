@@ -26,21 +26,6 @@ namespace LiveTiles.Controllers
             return View(pars);
         }
 
-        // GET: NoticeboardItem/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            NoticeboardItem noticeboardItem = db.NoticeboardItem.Find(id);
-            if (noticeboardItem == null)
-            {
-                return HttpNotFound();
-            }
-            return View(noticeboardItem);
-        }
-
         // GET: NoticeboardItem/Create
         public ActionResult Create(int? id)
         {
@@ -56,8 +41,6 @@ namespace LiveTiles.Controllers
         }
 
         // POST: NoticeboardItem/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateInput(false)]
         [ValidateAntiForgeryToken]
@@ -90,8 +73,6 @@ namespace LiveTiles.Controllers
         }
 
         // POST: NoticeboardItem/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateInput(false)]
         [ValidateAntiForgeryToken]

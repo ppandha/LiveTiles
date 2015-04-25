@@ -17,21 +17,6 @@ namespace LiveTiles.Controllers
             return View(db.Calendar.ToList());
         }
 
-        // GET: Calenders/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Calender calender = db.Calendar.Find(id);
-            if (calender == null)
-            {
-                return HttpNotFound();
-            }
-            return View(calender);
-        }
-
         // GET: Calenders/Create
         public ActionResult Create()
         {
@@ -39,9 +24,7 @@ namespace LiveTiles.Controllers
         }
 
         // POST: Calenders/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "TileId,TileType,Title,RefreshPeriod")] Calender calender)
         {
@@ -72,8 +55,6 @@ namespace LiveTiles.Controllers
         }
 
         // POST: Calenders/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "TileId,TileType,Title,RefreshPeriod")] Calender calender)

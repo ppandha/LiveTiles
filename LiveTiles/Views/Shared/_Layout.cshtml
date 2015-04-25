@@ -8,7 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-fixed-top  navbar-default navbar-custom">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -21,7 +21,6 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Tiles", "Index", "Start")</li>
-                    <li>@Html.ActionLink("Help", "About", "Home")</li>
                     <li>@Html.ActionLink("User Account", "Index", "UserAccounts")</li>
                     <li>@Html.ActionLink("Layout", "Index", "TileLayoutUserLinks")</li>
                     <li>@Html.ActionLink("Noticeboard", "Index", "Noticeboards")</li>
@@ -42,6 +41,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/bootstrap_override")
     @RenderSection("scripts", required: false)
 </body>
 </html>

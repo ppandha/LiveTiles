@@ -7,6 +7,10 @@
 <h2>News Feeds</h2>
 
 <p>
+    To add a new RSS URL news source click 'Create New'. To change a current search click 'Edit'.
+</p>
+
+<p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
@@ -39,7 +43,6 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.TileId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TileId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.TileId })
         </td>
     </tr>

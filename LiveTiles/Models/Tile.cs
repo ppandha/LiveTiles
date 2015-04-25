@@ -7,6 +7,7 @@ namespace LiveTiles.Models
     // Tile parent class holding common tile configuration information.
     public abstract class Tile
     {
+        [Display(Name = "Tile Name")]
         [Key]
         public int TileId { get; set; }
 

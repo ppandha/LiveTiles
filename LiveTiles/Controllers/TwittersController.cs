@@ -30,6 +30,7 @@ namespace LiveTiles.Controllers
         {
             if (ModelState.IsValid)
             {
+                twitter.TileType = 4;
                 db.Tile.Add(twitter);
                 db.SaveChanges();
                 return RedirectToAction("Index");

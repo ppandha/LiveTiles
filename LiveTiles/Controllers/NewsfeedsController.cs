@@ -30,6 +30,7 @@ namespace LiveTiles.Controllers
         {
             if (ModelState.IsValid)
             {
+                newsfeed.TileType = 3;
                 db.Tile.Add(newsfeed);
                 db.SaveChanges();
                 return RedirectToAction("Index");

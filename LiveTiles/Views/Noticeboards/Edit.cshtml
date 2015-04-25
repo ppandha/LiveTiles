@@ -11,7 +11,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <p>Enter your new Noticeboard name and Refresh Period here.</p
+        <p>Enter your new Noticeboard name and Refresh Period here.</p>
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.TileId)

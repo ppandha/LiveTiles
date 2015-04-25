@@ -26,7 +26,7 @@ namespace LiveTiles.Controllers
         // POST: Calenders/Create
          [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TileId,TileType,Title,RefreshPeriod")] Calender calender)
+        public ActionResult Create([Bind(Include = "TileId,Title,RefreshPeriod")] Calender calender)
         {
             if (ModelState.IsValid)
             {

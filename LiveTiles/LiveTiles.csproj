@@ -162,7 +162,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Content Include="Content\bootstrap_override.css" />
     <Compile Include="Controllers\CalendarItemsController.cs" />
     <Compile Include="Controllers\CalendersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -199,7 +198,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\zzbootstrap.min.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

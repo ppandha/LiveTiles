@@ -7,7 +7,7 @@ namespace LiveTiles.DAL
     public class LiveTilesContext : DbContext
     {
         public LiveTilesContext()
-            : base("LiveTilesContext7")
+            : base("LiveTilesContext8")
         {
             Database.SetInitializer(new DropCreateDatabaseAlways<LiveTilesContext>());
         }

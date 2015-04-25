@@ -4,6 +4,7 @@ namespace LiveTiles.Models
 {
     public class TileLayoutUserLink
     {
+        [Display(Name = "Tile Layout")]
         [Required]
         public int TileLayoutUserLinkId { get; set; }
 

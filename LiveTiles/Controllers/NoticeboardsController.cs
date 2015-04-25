@@ -30,6 +30,7 @@ namespace LiveTiles.Controllers
         {
             if (ModelState.IsValid)
             {
+                noticeboard.TileType = 1;
                 db.Tile.Add(noticeboard);
                 db.SaveChanges();
                 return RedirectToAction("Index");

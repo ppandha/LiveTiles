@@ -5,6 +5,7 @@ namespace LiveTiles.Models
 {
     public class TileLayout
     {
+        [Display(Name = "Tile Layout")]
         [Required]
         public int TileLayoutId { get; set; }
 

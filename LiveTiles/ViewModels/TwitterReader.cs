@@ -7,7 +7,6 @@ namespace LiveTiles.ViewModels
 {
     public class TwitterReader
     {
-
         // These are the keys needed for the twitter api. Obtained by registering on the twitter api website.
         // TweetInvi package is used to access the twitter api
         private const string consumerSecret = "LYphTmbmcChE8II99MH6ucGh39QIpcc59F0SCHet98L82apjFk";
@@ -22,7 +21,7 @@ namespace LiveTiles.ViewModels
             TwitterCredentials.SetCredentials(credentials.AuthorizationKey, credentials.AuthorizationSecret,
                 credentials.ConsumerKey, credentials.ConsumerSecret);
 
-            // Search the tweets containing the search criteria and create a list to display in the view
+            // Search the tweets containing the search criteria and create a list to display in the view, only use top 4
             var items = Search.SearchTweets(searchCriteria).OrderByDescending( a => a.CreatedAt ).ToList().Take(4);
 
             // create an empty list

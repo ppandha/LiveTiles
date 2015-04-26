@@ -12,6 +12,7 @@ namespace LiveTiles.Models
         public string OrgName { get; set; }
 
         [Required]
+        [Display(Name = "Tile Layout")]
         public int TileLayoutId { get; set; }
 
         public virtual TileLayout TileLayout { get; set; }

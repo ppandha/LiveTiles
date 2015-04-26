@@ -12,7 +12,7 @@ namespace LiveTiles.Controllers
         // GET: TileMain
         public ActionResult Index(UserAccount userAccount)
         {
-            // get data for this user account
+            // get data for this user account, the user has chosen which configuration to display
             var userAccount1 = db.UserAccount.Find(userAccount.UserAccountId);
 
             return View(userAccount1);

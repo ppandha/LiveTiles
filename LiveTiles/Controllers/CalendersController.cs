@@ -11,13 +11,13 @@ namespace LiveTiles.Controllers
     {
         private LiveTilesContext db = new LiveTilesContext();
 
-        // GET: Calenders
+        // GET: Calenders.
         public ActionResult Index()
         {
             return View(db.Calendar.ToList());
         }
 
-        // GET: Calenders/Create
+        // GET: Calenders/Create. 
         public ActionResult Create()
         {
             return View();
@@ -39,7 +39,7 @@ namespace LiveTiles.Controllers
             return View(calender);
         }
 
-        // GET: Calenders/Edit/5
+        // GET: Calenders/Edit/5.
         public ActionResult Edit(int? id)
         {
             if (id == null)

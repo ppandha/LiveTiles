@@ -14,6 +14,7 @@ namespace LiveTiles.Models
         public int UserAccountId { get; set; }
 
         [Required]
+        [Display(Name = "Tile")]
         public int TileId { get; set; }
 
         public virtual UserAccount UserAccount { get; set; }

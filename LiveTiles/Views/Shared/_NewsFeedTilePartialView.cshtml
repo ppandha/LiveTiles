@@ -6,7 +6,7 @@
             @foreach (var newsItem in @Model)
             {
                 <tr>
-                    <td>@newsItem.PublicationDate</td>
+                    <td>@newsItem.PublicationDate.Replace("GMT","")</td>
                     <td>
                         <h5> @newsItem.Title</h5>
                         @*<small>@Html.Raw(@newsItem.Description)</small>*@
